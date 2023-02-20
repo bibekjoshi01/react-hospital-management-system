@@ -39,7 +39,7 @@ function InvSidebar(props) {
     <Box paddingLeft={props.isCollapsed ? undefined : "0%"}>
       <Item
         title="Dashboard"
-        to="/"  
+        to="/inventory"  
         icon={<HomeOutlinedIcon />}
         selected={selected}
         setSelected={setSelected}

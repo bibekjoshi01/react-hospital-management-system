@@ -9,6 +9,7 @@ import ClinicSidebar from "./ClinicSidebar";
 import InvSidebar from "./InvSidebar";
 import LabSidebar from "./LabSidebar";
 import CoreSetupSidebar from "./CoreSetupSidebar";
+import HomeSidebar from "./HomeSidebar";
 
 const Sidebar = (props) => {
   const { active } = props;
@@ -108,6 +109,8 @@ const Sidebar = (props) => {
               isCollapsed={isCollapsed}
               setSelected={setSelected}
             />
+          ) : active === "Home" ? (
+            <HomeSidebar isCollapsed={isCollapsed} setSelected={setSelected} />
           ) : null}
         </Menu>
       </ProSidebar>
