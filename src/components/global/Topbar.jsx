@@ -9,10 +9,32 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
+import * as React from "react";
+import InfoIcon from "@mui/icons-material/Info";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 800,
+  height: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #1e5b87",
+  borderRadius: 2 ,
+  boxShadow: 24,
+  p: 4,
+};
 
 const Topbar = () => {
   const [fullScreen, setFullScreen] = useState(false);
-  const [active, setActive] = useState("Inventory");
+  const [active, setActive] = useState("Home");
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -35,72 +57,99 @@ const Topbar = () => {
               className="topbar-buttons"
             >
               <Box mr={2}>
-                <Button
-                  onClick={() => {
-                    setActive("Inventory");
-                  }}
-                  className={`${active === "Inventory" ? "active" : ""}`}
-                  sx={{
-                    backgroundColor: "white",
-                    color: "#1e5b87",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    padding: "5px 20px",
-                  }}
-                >
-                  Inventory
-                </Button>
+                <Link to="/">
+                  <Button
+                    onClick={() => {
+                      setActive("Home");
+                    }}
+                    className={`${active === "Home" ? "active" : ""}`}
+                    sx={{
+                      backgroundColor: "#1e5b87",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      padding: "5px 20px",
+                    }}
+                  >
+                    Home
+                  </Button>
+                </Link>
               </Box>
               <Box mr={2}>
-                <Button
-                  onClick={() => {
-                    setActive("Clinic");
-                  }}
-                  className={`${active === "Clinic" ? "active" : ""}`}
-                  sx={{
-                    backgroundColor: "white",
-                    color: "#1e5b87",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    padding: "5px 20px",
-                  }}
-                >
-                  Clinic
-                </Button>
+                <Link to="/inventory">
+                  <Button
+                    onClick={() => {
+                      setActive("Inventory");
+                    }}
+                    className={`${active === "Inventory" ? "active" : ""}`}
+                    sx={{
+                      backgroundColor: "#1e5b87",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      padding: "5px 20px",
+                    }}
+                  >
+                    Inventory
+                  </Button>
+                </Link>
               </Box>
               <Box mr={2}>
-                <Button
-                  onClick={() => {
-                    setActive("Lab");
-                  }}
-                  className={`${active === "Lab" ? "active" : ""}`}
-                  sx={{
-                    backgroundColor: "white",
-                    color: "#1e5b87",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    padding: "5px 20px",
-                  }}
-                >
-                  Lab
-                </Button>
+                <Link to="/clinic">
+                  <Button
+                    onClick={() => {
+                      setActive("Clinic");
+                    }}
+                    className={`${active === "Clinic" ? "active" : ""}`}
+                    sx={{
+                      backgroundColor: "#1e5b87",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      padding: "5px 20px",
+                    }}
+                  >
+                    Clinic
+                  </Button>
+                </Link>
+              </Box>
+              <Box mr={2}>
+                <Link to="/lab">
+                  <Button
+                    onClick={() => {
+                      setActive("Lab");
+                    }}
+                    className={`${active === "Lab" ? "active" : ""}`}
+                    sx={{
+                      backgroundColor: "#1e5b87",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      padding: "5px 20px",
+                    }}
+                  >
+                    Lab
+                  </Button>
+                </Link>
               </Box>
               <Box>
-                <Button
-                  onClick={() => {
-                    setActive("CoreSetup");
-                  }}
-                  className={`${active === "CoreSetup" ? "active" : ""}`}
-                  sx={{
-                    backgroundColor: "white",
-                    color: "#1e5b87",
-                    fontSize: "14px",
-                    fontWeight: "bold",
-                    padding: "5px 20px",
-                  }}
-                >
-                  Core Setup
-                </Button>
+                <Link to="/core-setup">
+                  <Button
+                    onClick={() => {
+                      setActive("CoreSetup");
+                    }}
+                    className={`${active === "CoreSetup" ? "active" : ""}`}
+                    sx={{
+                      backgroundColor: "#1e5b87",
+                      color: "white",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      padding: "5px 20px",
+                    }}
+                  >
+                    Core Setup
+                  </Button>
+                </Link>
               </Box>
             </Box>
             {/* ICONS */}
@@ -121,15 +170,30 @@ const Topbar = () => {
                 <NotificationsOutlinedIcon />
               </IconButton>
               <IconButton>
-                <SettingsOutlinedIcon />
+                <InfoIcon onClick={handleOpen} />
               </IconButton>
               <IconButton>
                 <PersonOutlinedIcon />
               </IconButton>
             </Box>
           </Box>
-        <Main active={active}/>
-        <Footer />
+          <Main active={active} />
+          <Footer />
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Text in a modal
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+              </Typography>
+            </Box>
+          </Modal>
         </main>
       </div>
     </>
