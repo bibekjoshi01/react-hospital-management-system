@@ -172,6 +172,9 @@ const Topbar = () => {
               <IconButton>
                 <InfoIcon onClick={handleOpen} />
               </IconButton>
+              {/* <IconButton>
+                <SettingsOutlinedIcon />
+              </IconButton> */}
               <IconButton>
                 <PersonOutlinedIcon />
               </IconButton>
