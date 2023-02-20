@@ -1,0 +1,19 @@
+.icon-buttons Button {
+    color: white;
+}
+  
+.topbar-buttons > div > button:hover {
+  background-color: #1e5b87;
+  border: 1px solid white;
+  color: #ffffff;
+}
+
+.topbar-buttons > div > button {
+  border: 1px solid white;
+}
+
+.topbar-buttons > div > button.active {
+  background-color: #1e5b87;
+  border: 1px solid white;
+  color: #ffffff;
+}
