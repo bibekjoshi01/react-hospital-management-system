@@ -14,6 +14,7 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import * as React from "react";
 import InfoIcon from "@mui/icons-material/Info";
+import NotificationPanel from "../Notification";
 
 const style = {
   position: "absolute",
@@ -166,15 +167,10 @@ const Topbar = () => {
               >
                 {fullScreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
               </IconButton>
-              <IconButton>
-                <NotificationsOutlinedIcon />
-              </IconButton>
+              <NotificationPanel/>
               <IconButton>
                 <InfoIcon onClick={handleOpen} />
               </IconButton>
-              {/* <IconButton>
-                <SettingsOutlinedIcon />
-              </IconButton> */}
               <IconButton>
                 <PersonOutlinedIcon />
               </IconButton>
