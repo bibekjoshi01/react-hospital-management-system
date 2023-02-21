@@ -17,10 +17,18 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 const NotificationPanel = () => {
   // Define state to keep track of whether the notification panel is open or not
   const [anchorEl, setAnchorEl] = useState(null);
+  // const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
+
+
+  // const unreadMessages = notifications.filter(
+  //   (notification) => !notification.read
+  // );
+  // const unreadMessagesLength = unreadMessages.length;
 
   // Define an event handler to open the notification panel when the notification icon is clicked
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
+    // setUnreadMessagesCount(0);
   };
 
   // Define an event handler to close the notification panel
@@ -35,72 +43,84 @@ const NotificationPanel = () => {
       avatar: "https://picsum.photos/200",
       title: "John Smith",
       content: "Liked your post ",
+      read: false,
     },
     {
       id: 2,
       avatar: "https://picsum.photos/200",
       title: "Jane Doe",
       content: "Commented on your post",
+      read: false,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: false,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: false,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
     {
       id: 3,
       avatar: "https://picsum.photos/200",
       title: "Bob Johnson",
       content: "Sent you a friend request",
+      read: true,
     },
   ];
 
@@ -167,7 +187,7 @@ const NotificationPanel = () => {
                   display: "flex",
                   justifyContent: "space-between",
                   alignItems: "center",
-                  paddingRight: "15px"
+                  paddingRight: "15px",
                 }}
                 className="notification"
               >
@@ -194,7 +214,13 @@ const NotificationPanel = () => {
   return (
     <>
       <IconButton onClick={handleClick}>
-        <NotificationsOutlinedIcon />
+        <NotificationsOutlinedIcon
+          sx={{
+            color: "white",
+            fontSize: "25px",
+            fontWeight: "bold",
+          }}
+        />
       </IconButton>
       {notificationPanel}
     </>
