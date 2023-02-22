@@ -9,6 +9,7 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
 import Footer from "./Footer";
+import Chat from "../Chat";
 import { Link } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
@@ -178,6 +179,7 @@ const Topbar = () => {
           </Box>
           <Main active={active} />
           <Footer />
+          <Chat />
           <Modal
             open={open}
             onClose={handleClose}

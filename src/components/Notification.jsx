@@ -17,12 +17,6 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 const NotificationPanel = () => {
   // Define state to keep track of whether the notification panel is open or not
   const [anchorEl, setAnchorEl] = useState(null);
-  // const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
-
-  // const unreadMessages = notifications.filter(
-  //   (notification) => !notification.read
-  // );
-  // const unreadMessagesLength = unreadMessages.length;
 
   // Define an event handler to open the notification panel when the notification icon is clicked
   const handleClick = (event) => {
@@ -132,6 +126,22 @@ const NotificationPanel = () => {
     cursor: "pointer",
   };
 
+  const countStyle = {
+    position: "absolute",
+    top: "5px", // adjust the positioning as per your requirement
+    right: "10px",
+    backgroundColor: "red",
+    borderRadius: "50%",
+    width: "10px",
+    height: "10px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "12px",
+    fontWeight: "bold",
+    color: "white",
+  };
+
   // Define the content of the notification panel
   const notificationPanel = (
     <Popover
@@ -220,6 +230,7 @@ const NotificationPanel = () => {
             fontWeight: "bold",
           }}
         />
+        <Box sx={countStyle}></Box>
       </IconButton>
       {notificationPanel}
     </>
