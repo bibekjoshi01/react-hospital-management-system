@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import HomeRepairServiceIcon from "@mui/icons-material/HomeRepairService";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -9,32 +9,36 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { MenuItem } from "react-pro-sidebar";
 
-
-const Item = ({ title, to, icon, selected, setSelected }) => {
-    return (
-      <MenuItem
-        active={selected === title}
-        style={{
-          color: "white",
-        }}
-        onClick={() => setSelected(title)}
-        icon={icon}
-      >
-        <Typography>{title}</Typography>
-        <Link to={to} />
-      </MenuItem>
-    );
-  };
-
+const Item = ({ title, to, icon, selected, setSelected, query }) => {
+  const searchCheck = title.toLowerCase().includes(query.toLowerCase());
+  return (
+    <Fragment>
+      {searchCheck && (
+        <MenuItem
+          active={selected === title}
+          style={{
+            color: "white",
+          }}
+          onClick={() => setSelected(title)}
+          icon={icon}
+        >
+          <Typography>{title}</Typography>
+          <Link to={to} />
+        </MenuItem>
+      )}
+    </Fragment>
+  );
+};
 
 function ClinicSidebar(props) {
   const [selected, setSelected] = useState("Dashboard");
-
+  const { query } = props;
   return (
     <Box paddingLeft={props.isCollapsed ? undefined : "0%"}>
       <Item
         title="Dashboard"
-        to="/clinic"  
+        to="/clinic"
+        query={query}
         icon={<HomeOutlinedIcon />}
         selected={selected}
         setSelected={setSelected}
@@ -42,6 +46,7 @@ function ClinicSidebar(props) {
       <Item
         title="Billing"
         to="/invoices"
+        query={query}
         icon={<HomeRepairServiceIcon />}
         selected={selected}
         setSelected={setSelected}
@@ -49,6 +54,7 @@ function ClinicSidebar(props) {
       <Item
         title="Appointment"
         to="/team"
+        query={query}
         icon={<PeopleOutlinedIcon />}
         selected={selected}
         setSelected={setSelected}
@@ -56,6 +62,7 @@ function ClinicSidebar(props) {
       <Item
         title="Patient Registeration"
         to="/team"
+        query={query}
         icon={<PeopleOutlinedIcon />}
         selected={selected}
         setSelected={setSelected}
@@ -63,6 +70,7 @@ function ClinicSidebar(props) {
       <Item
         title="Financial Reports"
         to="/invoices"
+        query={query}
         icon={<ReceiptOutlinedIcon />}
         selected={selected}
         setSelected={setSelected}
@@ -70,11 +78,12 @@ function ClinicSidebar(props) {
       <Item
         title="IRD Reports"
         to="/invoices"
+        query={query}
         icon={<AssessmentIcon />}
         selected={selected}
         setSelected={setSelected}
       />
-    </Box> 
+    </Box>
   );
 }
 
