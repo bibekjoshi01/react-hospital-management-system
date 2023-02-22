@@ -13,10 +13,16 @@ import HomeSidebar from "./HomeSidebar";
 
 const Sidebar = (props) => {
   const { active } = props;
-  console.log(active);
+  // console.log(active);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [selected, setSelected] = useState(true);
+  const [query, setQuery] = useState("");
 
+  const handleSearch = (e) => {
+    setQuery(e.target.value);
+  };
+
+  console.log(query);
   return (
     <Box
       sx={{
@@ -78,6 +84,7 @@ const Sidebar = (props) => {
               marginBottom="20px"
             >
               <InputBase
+                onChange={handleSearch}
                 sx={{ ml: 2, flex: 1, color: "white" }}
                 placeholder="Search"
               />
@@ -96,21 +103,35 @@ const Sidebar = (props) => {
 
           {/* Sidebars */}
           {active === "Inventory" ? (
-            <InvSidebar isCollapsed={isCollapsed} setSelected={setSelected} />
+            <InvSidebar
+              isCollapsed={isCollapsed}
+              setSelected={setSelected}
+              query={query}
+            />
           ) : active === "Clinic" ? (
             <ClinicSidebar
               isCollapsed={isCollapsed}
               setSelected={setSelected}
+              query={query}
             />
           ) : active === "Lab" ? (
-            <LabSidebar isCollapsed={isCollapsed} setSelected={setSelected} />
+            <LabSidebar
+              isCollapsed={isCollapsed}
+              setSelected={setSelected}
+              query={query}
+            />
           ) : active === "CoreSetup" ? (
             <CoreSetupSidebar
               isCollapsed={isCollapsed}
               setSelected={setSelected}
+              query={query}
             />
           ) : active === "Home" ? (
-            <HomeSidebar isCollapsed={isCollapsed} setSelected={setSelected} />
+            <HomeSidebar
+              isCollapsed={isCollapsed}
+              setSelected={setSelected}
+              query={query}
+            />
           ) : null}
         </Menu>
       </ProSidebar>

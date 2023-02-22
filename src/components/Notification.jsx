@@ -19,7 +19,6 @@ const NotificationPanel = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   // const [unreadMessagesCount, setUnreadMessagesCount] = useState(0);
 
-
   // const unreadMessages = notifications.filter(
   //   (notification) => !notification.read
   // );
