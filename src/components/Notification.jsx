@@ -15,21 +15,17 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 
 const NotificationPanel = () => {
-  // Define state to keep track of whether the notification panel is open or not
   const [anchorEl, setAnchorEl] = useState(null);
 
-  // Define an event handler to open the notification panel when the notification icon is clicked
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     // setUnreadMessagesCount(0);
   };
 
-  // Define an event handler to close the notification panel
   const handleClose = () => {
     setAnchorEl(null);
   };
 
-  // Define some dummy data for the notifications
   const notifications = [
     {
       id: 1,
@@ -230,7 +226,9 @@ const NotificationPanel = () => {
             fontWeight: "bold",
           }}
         />
+        {true && (
         <Box sx={countStyle}></Box>
+        )}
       </IconButton>
       {notificationPanel}
     </>

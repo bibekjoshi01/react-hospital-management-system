@@ -2,8 +2,24 @@ import { Box, Button, Container, Grid } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import "../../css/Dashboard.css";
 import DisplayBox from "../DisplayBox";
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 const InventoryDashboard = () => {
+  const [revenueStock, setRevenueStock] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://branch1.localhost:8002/api/v1/inventory-dashboard/revenue-stock"
+      )
+      .then((response) => {
+        console.log(response, "hello");
+        setRevenueStock(response.data);
+      });
+  }, []);
+
   return (
     <Box m="20px" className="title">
       {/* HEADER */}
@@ -27,18 +43,10 @@ const InventoryDashboard = () => {
 
       {/* GRID & CHARTS */}
       <Container maxWidth={false}>
+        {/* {revenueStock.map()} */}
         <Grid container spacing={3}>
           <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <DisplayBox />
-          </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <DisplayBox />
-          </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <DisplayBox />
-          </Grid>
-          <Grid item lg={3} sm={6} xl={3} xs={12}>
-            <DisplayBox />
+            <DisplayBox revenueStock={revenueStock}/>
           </Grid>
         </Grid>
       </Container>

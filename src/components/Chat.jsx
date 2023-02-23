@@ -45,7 +45,7 @@ function Chat() {
         bottom="80px"
         right="80px"
       >
-        <Button sx={style} className="chat-button">
+        <Button sx={style} id="chat-btn">
           <PermPhoneMsgIcon sx={iconStyle} />
           <Box sx={countStyle}>2</Box>
         </Button>
